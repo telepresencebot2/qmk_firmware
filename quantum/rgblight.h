@@ -61,6 +61,7 @@
 |       34        | RGBLIGHT_MODE_STATIC_GRADIENT + 9 |
 |       35        | RGBLIGHT_MODE_RGB_TEST            |
 |       36        | RGBLIGHT_MODE_ALTERNATING         |
+|       37        | RGBLIGHT_MODE_GAMEPAD             |
 |-----------------|-----------------------------------|
  *****/
 
@@ -203,14 +204,6 @@ void rgblight_mode_noeeprom(uint8_t mode);
 void rgblight_toggle_noeeprom(void);
 void rgblight_enable_noeeprom(void);
 void rgblight_disable_noeeprom(void);
-void rgblight_step_noeeprom(void);
-void rgblight_step_reverse_noeeprom(void);
-void rgblight_increase_hue_noeeprom(void);
-void rgblight_decrease_hue_noeeprom(void);
-void rgblight_increase_sat_noeeprom(void);
-void rgblight_decrease_sat_noeeprom(void);
-void rgblight_increase_val_noeeprom(void);
-void rgblight_decrease_val_noeeprom(void);
 
 void rgblight_sethsv_eeprom_helper(uint16_t hue, uint8_t sat, uint8_t val, bool write_to_eeprom);
 void rgblight_mode_eeprom_helper(uint8_t mode, bool write_to_eeprom);
@@ -233,6 +226,8 @@ void rgblight_effect_knight(uint8_t interval);
 void rgblight_effect_christmas(void);
 void rgblight_effect_rgbtest(void);
 void rgblight_effect_alternating(void);
+void rgblight_effect_gamepad(void);
+void rgblight_effect_league(void);
 
 #endif // #ifndef RGBLIGHT_H_DUMMY_DEFINE
 #endif // RGBLIGHT_H
@@ -290,7 +285,11 @@ void rgblight_effect_alternating(void);
     _RGBM_SINGLE_DYNAMIC( RGB_TEST )
   #endif
   #ifdef RGBLIGHT_EFFECT_ALTERNATING
-    _RGBM_SINGLE_DYNAMIC( ALTERNATING )
+   _RGBM_SINGLE_DYNAMIC( ALTERNATING )
+  #endif
+  ////  Custom:
+  #ifdef RGBLIGHT_EFFECT_GAMEPAD
+     _RGBM_MULTI_STATIC( GAMEPAD )
   #endif
   ////  Add a new mode here.
   // #ifdef RGBLIGHT_EFFECT_<name>
