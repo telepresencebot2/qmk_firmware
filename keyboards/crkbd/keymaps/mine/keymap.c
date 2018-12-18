@@ -70,9 +70,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------.                ,-----------------------------------------.
         ESC,     Q,     W,     E,     R,     T,                      Y,     U,     I,     O,     P,  BSPC,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LCTL,     A,     S,     D,     F,     G,                      H,     J,     K,     L,  SCLN,  QUOT,\
+        TAB,     A,     S,     D,     F,     G,                      H,     J,     K,     L,  SCLN,  QUOT,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LCTL,     Z,     X,     C,     V,     B,                      N,     M,  COMM,   DOT,  SLSH,  RSFT,\
+       LCTL, GUIEI,     Z,     X,     C,     V,                      B,     N,     M,  COMM,   DOT,  SLSH,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                   LSFT , LOWER,   SPC,      ENT, RAISE, RALT \
                               //`--------------------'  `--------------------'
@@ -80,13 +80,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LEAGUE] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-        TAB,     1,     2,     3,     4,     5,                 QWERTY, XXXXX, XXXXX, XXXXX, XXXXX,   ESC,\
+        ESC,     1,     2,     3,     4,     5,                 QWERTY, XXXXX, XXXXX, XXXXX, XXXXX,   ESC,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-          A,     Q,     W,     E,     R,     T,                 QWERTY, XXXXX, XXXXX, XXXXX, XXXXX,     P,\
+        TAB,     Q,     W,     E,     R,     T,                 QWERTY, XXXXX, XXXXX, XXXXX, XXXXX,     P,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
           B,     A,     S,     D,     F,     G,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, GUIEI,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                   LCTL,  LSFT, LALT,    XXXXX, XXXXX, XXXXX\
+                                    LSFT,  LCTL,  SPC,    XXXXX, XXXXX, XXXXX\
                               //`--------------------'  `--------------------'
   ),
 
@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
        LCTL,    F1,    F2,    F3,    F4,    F5,                     F6,    F7,    F8,    F9,   F10,  HOME,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LALT,   F11,   F12,   F13,   F14,   F15,                    F16,   F17,   F18,   F19,   F20,   END,\
+       LALT,   F11,   F12,   F13,   F14,  LSFT,                    F16,   F17,   F18,   F19,   F20,   END,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                   LSFT , LOWER,   SPC,      ENT, RAISE, RALT \
                               //`--------------------'  `--------------------'
@@ -128,13 +128,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-        RST,  LRST, XXXXX, XXXXX, XXXXX, XXXXX,                    LOL, XXXXX, PGUP , UP   , PGDN ,   DEL,\
+        RST,  LRST, XXXXX, XXXXX, XXXXX, XXXXX,                    LOL,  PGUP,    UP, PGDN , XXXXX,   DEL,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LTOG,  LHUI,  LSAI,  LVAI, XXXXX, XXXXX,                  MAPLE, XXXXX, LEFT , DOWN , RIGHT, XXXXX,\
+       LTOG,  LHUI,  LSAI,  LVAI, XXXXX, XXXXX,                  MAPLE,  LEFT,  DOWN, RIGHT, XXXXX, XXXXX,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
        LMOD,  LHUD,  LSAD,  LVAD, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                  GUIEI, LOWER,   SPC,      ENT, RAISE, RALT \
+                                   LSFT, LOWER,   SPC,      ENT, RAISE, RALT \
                               //`--------------------'  `--------------------'
   )
 };
@@ -157,12 +157,9 @@ void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 
 void matrix_init_user(void) {
     rgblight_enable();
-    //rgblight_setrgb(0,10,0);
-    //RGBLIGHT_EFFECT_CHRISTMAS_STEP = 1;
-    rgblight_sethsv(240, 255, 150);
-    //rgblight_mode(1);
+    rgblight_sethsv(160, 255, 100);
     persistent_default_layer_set(1UL<<_QWERTY);
-    rgblight_mode(29);
+    rgblight_mode(1);
 
     #ifdef RGBLIGHT_ENABLE
       RGB_current_mode = rgblight_config.mode;
@@ -233,7 +230,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case QWERTY:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<_QWERTY);
-        rgblight_mode(29);
+        rgblight_mode(30);
       }
       return false;
       break;
@@ -272,6 +269,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
     case ADJUST:
+        //TG(_ADJUST);
         if (record->event.pressed) {
           layer_on(_ADJUST);
         } else {
