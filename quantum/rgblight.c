@@ -845,7 +845,7 @@ void rgblight_effect_league(void){
     sethsv(0, 255, 100, (LED_TYPE *)&led[26]);
     sethsv(120, 255, 100, (LED_TYPE *)&led[8]);
     sethsv(120, 255, 100, (LED_TYPE *)&led[9]);
-}
+  }
 
   rgblight_set();
 }

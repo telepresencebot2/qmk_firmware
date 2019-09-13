@@ -134,7 +134,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define KC_HANJ KC_LANG2
 
 /* Modifiers */
-#define KC_LCTL KC_LCTRL
 #define KC_LSFT KC_LSHIFT
 #define KC_LCMD KC_LGUI
 #define KC_LWIN KC_LGUI
@@ -143,6 +142,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define KC_ALGR KC_RALT
 #define KC_RCMD KC_RGUI
 #define KC_RWIN KC_RGUI
+#define KC_LCTL KC_LCTRL
 
 /* Generic Desktop Page (0x01) */
 #define KC_PWR  KC_SYSTEM_POWER

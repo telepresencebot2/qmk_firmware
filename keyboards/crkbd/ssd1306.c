@@ -26,7 +26,7 @@ static const unsigned char font[] PROGMEM;
 //#define BatteryUpdateInterval 10000 /* milliseconds */
 
 // 'last_flush' is declared as uint16_t,
-// so this must be less than 65535 
+// so this must be less than 65535
 #define ScreenOffInterval 60000 /* milliseconds */
 #if DEBUG_TO_SCREEN
 static uint8_t displaying;
@@ -141,7 +141,7 @@ bool iota_gfx_init(bool rotate) {
   send_cmd2(SetChargePump, 0x14 /* Enable */);
   send_cmd2(SetMemoryMode, 0 /* horizontal addressing */);
 
-  if(rotate){
+  if(!rotate){
     // the following Flip the display orientation 180 degrees
     send_cmd1(SegRemap);
     send_cmd1(ComScanInc);
@@ -200,13 +200,13 @@ void matrix_write_char_inner(struct CharacterMatrix *matrix, uint8_t c) {
   *matrix->cursor = c;
   ++matrix->cursor;
 
-  if (matrix->cursor - &matrix->display[0][0] == sizeof(matrix->display)) {
-    // We went off the end; scroll the display upwards by one line
-    memmove(&matrix->display[0], &matrix->display[1],
-            MatrixCols * (MatrixRows - 1));
-    matrix->cursor = &matrix->display[MatrixRows - 1][0];
-    memset(matrix->cursor, ' ', MatrixCols);
-  }
+  // if (matrix->cursor - &matrix->display[0][0] == sizeof(matrix->display)) {
+  //   // We went off the end; scroll the display upwards by one line
+  //   memmove(&matrix->display[0], &matrix->display[1],
+  //           MatrixCols * (MatrixRows - 1));
+  //   matrix->cursor = &matrix->display[MatrixRows - 1][0];
+  //   memset(matrix->cursor, ' ', MatrixCols);
+  // }
 }
 
 void matrix_write_char(struct CharacterMatrix *matrix, uint8_t c) {
