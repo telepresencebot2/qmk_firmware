@@ -25,10 +25,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Select hand configuration */
 
 //#define MASTER_LEFT
-#define MASTER_RIGHT
-// #define EE_HANDS
+// #define MASTER_RIGHT
+#define EE_HANDS
 
 #define SSD1306OLED
+
+#define SPLIT_USB_DETECT
+#define NO_USB_STARTUP_CHECK 
 
 #define USE_SERIAL_PD2
 
