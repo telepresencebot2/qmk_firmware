@@ -113,24 +113,24 @@ void mode_bricir(uint16_t group){
 
 
 void set_purple(void){
-  led_saturation[0] = 255;
+  led_saturation[0] = 0;
   led_saturation[1] = 0;
   led_saturation[2] = 255;
   led_saturation[3] = 255;
-  led_hue[0] = 280;
+  led_hue[0] = 160;
   led_hue[1] = 280;
   led_hue[2] = 280;
   led_hue[3] = 280;
   led_brightness[0] = 255;
-  led_brightness[1] = 160;
+  led_brightness[1] = 200;
   led_brightness[2] = 180;
   led_brightness[3] = 255;
-  led_speed[0] = 2;
-  led_speed[1] = 8;
+  led_speed[0] = 10;
+  led_speed[1] = 1;
   led_speed[2] = 1;
   led_speed[3] = 3;
-  led_mode[0] = bricyc_mode;
-  led_mode[1] = bricyc_mode;
+  led_mode[0] = bricir_mode;
+  led_mode[1] = static_mode;
   led_mode[2] = static_mode;
   led_mode[3] = bricir_mode;
 }

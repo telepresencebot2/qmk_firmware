@@ -24,12 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-//#define MASTER_LEFT
+#define MASTER_LEFT
 //#define MASTER_RIGHT
-#define EE_HANDS
-
-#define SPLIT_USB_DETECT
-#define NO_USB_STARTUP_CHECK
+// #define EE_HANDS
 
 #define SSD1306OLED
 
@@ -44,4 +41,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_LIMIT_VAL 255
 #define RGBLIGHT_HUE_STEP 10
 #define RGBLIGHT_SAT_STEP 17
-#define RGBLIGHT_VAL_STEP 34
+#define RGBLIGHT_VAL_STEP 17
